@@ -45,7 +45,7 @@ public class SharedViewModel extends AndroidViewModel {
         this.app = application;
     }
 
-    void setFusedLocationClient(FusedLocationProviderClient mFusedLocationClient) {
+    public void setFusedLocationClient(FusedLocationProviderClient mFusedLocationClient) {
         this.mFusedLocationClient = mFusedLocationClient;
     }
 
@@ -61,7 +61,7 @@ public class SharedViewModel extends AndroidViewModel {
         return progressBar;
     }
 
-    LiveData<String> getCheckPermission() {
+    public LiveData<String> getCheckPermission() {
         return checkPermission;
     }
 
@@ -92,7 +92,7 @@ public class SharedViewModel extends AndroidViewModel {
     }
 
     @SuppressLint("MissingPermission")
-    void startTrackingLocation(boolean needsChecking) {
+    public void startTrackingLocation(boolean needsChecking) {
         if (needsChecking) {
             checkPermission.postValue("check");
         } else {
@@ -126,13 +126,13 @@ public class SharedViewModel extends AndroidViewModel {
         Geocoder geocoder = new Geocoder(app.getApplicationContext(), Locale.getDefault());
 
         executor.execute(() -> {
-            // Aquest codi s'executa en segon pla
+
             List<Address> addresses = null;
             String resultMessage = "";
 
             try {
                 addresses = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(),
-                        // En aquest cas, sols volem una única adreça:
+
                         1);
 
 
@@ -152,9 +152,9 @@ public class SharedViewModel extends AndroidViewModel {
                     resultMessage = TextUtils.join("\n", addressParts);
                     String finalResultMessage = resultMessage;
                     handler.post(() -> {
-                        // Aquest codi s'executa en primer pla.
+
                         if (mTrackingLocation)
-                            currentAddress.postValue(String.format("Direcció: %1$s \n Hora: %2$tr", finalResultMessage, System.currentTimeMillis()));
+                            currentAddress.postValue(String.format( finalResultMessage, System.currentTimeMillis()));
                     });
                 }
 
