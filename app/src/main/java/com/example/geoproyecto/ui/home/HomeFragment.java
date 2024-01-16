@@ -32,6 +32,10 @@ import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -44,6 +48,7 @@ public class HomeFragment extends Fragment {
 
 
     private FragmentHomeBinding binding;
+    private FirebaseUser authUser;
 
 
 
@@ -57,11 +62,17 @@ public class HomeFragment extends Fragment {
         SharedViewModel sharedViewModel = new ViewModelProvider(getActivity()).get(SharedViewModel.class);
 
         SharedViewModel.getCurrentAddress().observe(getViewLifecycleOwner(), address -> {
-            binding.TextLocation.setText(String.format(
+
+            binding.txtDireccio.setText(String.format(
                     "Direcció: %1$s \n Hora: %2$tr",
-                    address, System.currentTimeMillis()));
+                    address, System.currentTimeMillis()
+            ));
         });
-        sharedViewModel.getButtonText().observe(getViewLifecycleOwner(), s -> binding.GetLocation.setText(s));
+        sharedViewModel.getCurrentLatLng().observe(getViewLifecycleOwner(), latlng -> {
+            binding.txtLatitud.setText(String.valueOf(latlng.latitude));
+            binding.txtLongitud.setText(String.valueOf(latlng.longitude));
+        });
+
         sharedViewModel.getProgressBar().observe(getViewLifecycleOwner(), visible -> {
             if (visible)
                 binding.loading.setVisibility(ProgressBar.VISIBLE);
@@ -69,12 +80,32 @@ public class HomeFragment extends Fragment {
                 binding.loading.setVisibility(ProgressBar.INVISIBLE);
         });
 
-        binding.GetLocation.setOnClickListener(view -> {
-            Log.d("DEBUG", "Clicked Get Location");
-            sharedViewModel.switchTrackingLocation();
+        sharedViewModel.switchTrackingLocation();
+
+        sharedViewModel.getUser().observe(getViewLifecycleOwner(), user -> {
+            authUser = user;
         });
 
 
+
+        binding.buttonNotificar.setOnClickListener(button -> {
+            Incidencia incidencia = new Incidencia();
+            incidencia.setDireccio(binding.txtDireccio.getText().toString());
+            incidencia.setLatitud(binding.txtLatitud.getText().toString());
+            incidencia.setLongitud(binding.txtLongitud.getText().toString());
+            incidencia.setProblema(binding.txtDescripcio.getText().toString());
+
+            DatabaseReference base = FirebaseDatabase.getInstance(
+                    "https://geoproyecto-731d1-default-rtdb.europe-west1.firebasedatabase.app"
+            ).getReference();
+
+            DatabaseReference users = base.child("users");
+            DatabaseReference uid = users.child(authUser.getUid());
+            DatabaseReference incidencies = uid.child("incidencies");
+
+            DatabaseReference reference = incidencies.push();
+            reference.setValue(incidencia);
+        });
 
 
 
