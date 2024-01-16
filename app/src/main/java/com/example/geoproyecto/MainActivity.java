@@ -1,11 +1,14 @@
 package com.example.geoproyecto;
 
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
 import com.example.geoproyecto.ui.home.SharedViewModel;
+import com.firebase.ui.auth.AuthUI;
+import com.firebase.ui.auth.FirebaseAuthUIActivityResultContract;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -21,10 +24,16 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.example.geoproyecto.databinding.ActivityMainBinding;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
+import java.util.Arrays;
 
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
+
+    private ActivityResultLauncher<Intent> signInLauncher;
     private ActivityResultLauncher<String[]> locationPermissionRequest;
     private SharedViewModel sharedViewModel;
 
@@ -63,21 +72,55 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(this, "No concedeixen permisos", Toast.LENGTH_SHORT).show();
             }
         });
+
+        signInLauncher = registerForActivityResult(
+                new FirebaseAuthUIActivityResultContract(),
+                (result) -> {
+                    if (result.getResultCode() == RESULT_OK) {
+                        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                        sharedViewModel.setUser(user);
+                    }
+                });
+
+
     }
 
-    void checkPermission() {
-        Log.d("PERMISSIONS", "Check permisssions");
-        if (ContextCompat.checkSelfPermission(this,
-                android.Manifest.permission.ACCESS_FINE_LOCATION)
-                != PackageManager.PERMISSION_GRANTED) {
+    @Override
+    protected void onStart() {
+        super.onStart();
 
-            Log.d("PERMISSIONS", "Request permisssions");
-            locationPermissionRequest.launch(new String[]{
-                    android.Manifest.permission.ACCESS_FINE_LOCATION,
-                    android.Manifest.permission.ACCESS_COARSE_LOCATION
-            });
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+        Log.e("XXXX", String.valueOf(auth.getCurrentUser()));
+        if (auth.getCurrentUser() == null) {
+            Intent signInIntent =
+                    AuthUI.getInstance()
+                            .createSignInIntentBuilder()
+                            .setIsSmartLockEnabled(false)
+                            .setAvailableProviders(
+                                    Arrays.asList(
+                                            new AuthUI.IdpConfig.EmailBuilder().build()
+                                    )
+                            )
+                            .build();
+            signInLauncher.launch(signInIntent);
         } else {
-            sharedViewModel.startTrackingLocation(false);
+            sharedViewModel.setUser(auth.getCurrentUser());
         }
     }
+
+        void checkPermission() {
+            Log.d("PERMISSIONS", "Check permisssions");
+            if (ContextCompat.checkSelfPermission(this,
+                    android.Manifest.permission.ACCESS_FINE_LOCATION)
+                    != PackageManager.PERMISSION_GRANTED) {
+
+                Log.d("PERMISSIONS", "Request permisssions");
+                locationPermissionRequest.launch(new String[]{
+                        android.Manifest.permission.ACCESS_FINE_LOCATION,
+                        android.Manifest.permission.ACCESS_COARSE_LOCATION
+                });
+            } else {
+                sharedViewModel.startTrackingLocation(false);
+            }
+        }
 }

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "482958501067",
+    "project_id": "geoproyecto-731d1",
+    "storage_bucket": "geoproyecto-731d1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:482958501067:android:cd53eb5653e61933bae74e",
+        "android_client_info": {
+          "package_name": "com.example.geoproyecto"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "482958501067-5q7buft21q2ipc02h11ro8rbsaitsno7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCC1lyLWExvLuM6MqDleg1GOD4yOoxi3W4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "482958501067-5q7buft21q2ipc02h11ro8rbsaitsno7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

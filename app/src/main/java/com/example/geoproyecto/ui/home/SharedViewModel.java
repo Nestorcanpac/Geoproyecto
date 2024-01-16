@@ -1,7 +1,10 @@
 package com.example.geoproyecto.ui.home;
 
+import static android.app.Activity.RESULT_OK;
+
 import android.annotation.SuppressLint;
 import android.app.Application;
+import android.content.Intent;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
@@ -10,6 +13,7 @@ import android.os.Looper;
 import android.text.TextUtils;
 import android.util.Log;
 
+import androidx.activity.result.ActivityResultLauncher;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
@@ -19,6 +23,8 @@ import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -31,6 +37,10 @@ import java.util.concurrent.Executors;
 
 public class SharedViewModel extends AndroidViewModel {
     private final Application app;
+
+    private ActivityResultLauncher<Intent> signInLauncher;
+
+    private MutableLiveData<FirebaseUser> user = new MutableLiveData<>();
     private static final MutableLiveData<String> currentAddress = new MutableLiveData<>();
     private final MutableLiveData<String> checkPermission = new MutableLiveData<>();
     private final MutableLiveData<String> buttonText = new MutableLiveData<>();
@@ -41,7 +51,6 @@ public class SharedViewModel extends AndroidViewModel {
 
     public SharedViewModel(@NonNull Application application) {
         super(application);
-
         this.app = application;
     }
 
@@ -74,6 +83,8 @@ public class SharedViewModel extends AndroidViewModel {
         }
     };
 
+
+
     private LocationRequest getLocationRequest() {
         LocationRequest locationRequest = new LocationRequest();
         locationRequest.setInterval(10000);
@@ -81,6 +92,21 @@ public class SharedViewModel extends AndroidViewModel {
         locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
         return locationRequest;
     }
+
+
+
+    public LiveData<FirebaseUser> getUser() {
+        return user;
+    }
+
+    public void setUser(FirebaseUser passedUser) {
+        user.postValue(passedUser);
+    }
+
+
+
+
+
 
     public void switchTrackingLocation() {
         if (!mTrackingLocation) {
