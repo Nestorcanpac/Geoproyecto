@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
+    app:startDestination="@id/empezar_app">
 
     <fragment
         android:id="@+id/navigation_home"
@@ -22,4 +22,12 @@
         android:name="com.example.geoproyecto.ui.notifications.NotificationsFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_notifications" />
+    <fragment
+        android:id="@+id/empezar_app"
+        android:name="com.example.geoproyecto.Empezar_app"
+        android:label="Empezar_app" >
+        <action
+            android:id="@+id/action_empezar_app_to_navigation_home"
+            app:destination="@id/navigation_home" />
+    </fragment>
 </navigation>

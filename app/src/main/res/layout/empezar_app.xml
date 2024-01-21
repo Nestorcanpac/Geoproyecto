@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    tools:context=".FirstFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp"
+        android:background="@drawable/polish_20240119_103347241"
+        >
+
+        <ImageView
+            android:id="@+id/ImagenEmpezar"
+            android:layout_width="267dp"
+            android:layout_height="323dp"
+            android:layout_marginBottom="60dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.229"
+            tools:src="@tools:sample/avatars" />
+
+        <Button
+            android:id="@+id/Empezar"
+            android:layout_width="232dp"
+            android:layout_height="58dp"
+            android:shadowColor="#A41616"
+            android:text="Empezar"
+            android:textColorHighlight="#A01616"
+            android:textColorHint="#A90F0F"
+            android:textColorLink="#A41C1C"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ImagenEmpezar"
+            app:layout_constraintVertical_bias="0.182"
+            app:rippleColor="#A40808"
+            app:strokeColor="#AE1414"
+
+            />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

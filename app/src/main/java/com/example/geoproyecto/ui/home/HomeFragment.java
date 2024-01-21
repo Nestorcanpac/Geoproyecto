@@ -2,6 +2,7 @@ package com.example.geoproyecto.ui.home;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.GnssAntennaInfo;
@@ -14,6 +15,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,10 +23,12 @@ import android.widget.Toast;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.geoproyecto.R;
 import com.example.geoproyecto.databinding.FragmentHomeBinding;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LastLocationRequest;
@@ -64,21 +68,15 @@ public class HomeFragment extends Fragment {
         SharedViewModel.getCurrentAddress().observe(getViewLifecycleOwner(), address -> {
 
             binding.txtDireccio.setText(String.format(
-                    "Direcció: %1$s \n Hora: %2$tr",
+                    "Direccion: %1$s",
                     address, System.currentTimeMillis()
             ));
         });
-        sharedViewModel.getCurrentLatLng().observe(getViewLifecycleOwner(), latlng -> {
-            binding.txtLatitud.setText(String.valueOf(latlng.latitude));
-            binding.txtLongitud.setText(String.valueOf(latlng.longitude));
-        });
 
-        sharedViewModel.getProgressBar().observe(getViewLifecycleOwner(), visible -> {
-            if (visible)
-                binding.loading.setVisibility(ProgressBar.VISIBLE);
-            else
-                binding.loading.setVisibility(ProgressBar.INVISIBLE);
-        });
+
+
+
+
 
         sharedViewModel.switchTrackingLocation();
 
@@ -91,8 +89,7 @@ public class HomeFragment extends Fragment {
         binding.buttonNotificar.setOnClickListener(button -> {
             Incidencia incidencia = new Incidencia();
             incidencia.setDireccio(binding.txtDireccio.getText().toString());
-            incidencia.setLatitud(binding.txtLatitud.getText().toString());
-            incidencia.setLongitud(binding.txtLongitud.getText().toString());
+
             incidencia.setProblema(binding.txtDescripcio.getText().toString());
 
             DatabaseReference base = FirebaseDatabase.getInstance(
@@ -110,6 +107,17 @@ public class HomeFragment extends Fragment {
 
 
         return root;
+    }
+
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+
+        Button boton=view.findViewById(R.id.buttonNotificar);
+        boton.setBackgroundColor(Color.parseColor("#FF0000"));
+
     }
 
     @Override
