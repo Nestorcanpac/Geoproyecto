@@ -74,7 +74,7 @@
         android:layout_height="61dp"
         android:background="@android:color/holo_red_light"
         android:backgroundTint="#FF0000"
-        android:text="Subeme la propi"
+        android:text="Súbeme la propi"
         app:iconTint="#FF0000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

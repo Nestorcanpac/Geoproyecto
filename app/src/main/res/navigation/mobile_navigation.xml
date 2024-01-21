@@ -25,7 +25,7 @@
     <fragment
         android:id="@+id/empezar_app"
         android:name="com.example.geoproyecto.Empezar_app"
-        android:label="Empezar_app" >
+        android:label="Tele Propinas">
         <action
             android:id="@+id/action_empezar_app_to_navigation_home"
             app:destination="@id/navigation_home" />
