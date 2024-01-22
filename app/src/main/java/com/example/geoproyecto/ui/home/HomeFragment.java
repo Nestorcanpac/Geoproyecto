@@ -7,6 +7,7 @@ import android.location.Address;
 import android.location.Geocoder;
 import android.location.GnssAntennaInfo;
 import android.location.Location;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -51,8 +52,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class HomeFragment extends Fragment {
-
-
+    private MediaPlayer mp;
     private FragmentHomeBinding binding;
     private FirebaseUser authUser;
 
@@ -76,7 +76,7 @@ public class HomeFragment extends Fragment {
         });
 
 
-
+        int audioRawId = R.raw.monedasonido;
 
 
 
@@ -86,7 +86,7 @@ public class HomeFragment extends Fragment {
             authUser = user;
         });
 
-
+        mp = MediaPlayer.create(requireContext(),audioRawId);
 
         binding.buttonNotificar.setOnClickListener(button -> {
             Incidencia incidencia = new Incidencia();
@@ -104,7 +104,7 @@ public class HomeFragment extends Fragment {
 
             DatabaseReference reference = incidencies.push();
             reference.setValue(incidencia);
-
+            mp.start();
 
 
         });
@@ -120,8 +120,12 @@ public class HomeFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
 
+
         Button botontal=view.findViewById(R.id.buttonNotificar);
         botontal.setBackgroundColor(Color.parseColor("#FF0000"));
+
+
+
 
 
 
