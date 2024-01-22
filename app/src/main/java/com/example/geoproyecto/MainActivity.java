@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
 import com.example.geoproyecto.ui.home.SharedViewModel;
@@ -54,6 +55,20 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
 
+
+        navView.setVisibility(View.GONE);
+
+        navController.addOnDestinationChangedListener((controller, destination, arguments) -> {
+            // Verifica si el fragmento actual es el que debe mostrar el BottomNavigationView
+            if (destination.getId() == R.id.navigation_home)  {
+                navView.setVisibility(View.VISIBLE);
+            } else if (destination.getId() == R.id.navigation_dashboard) {
+                navView.setVisibility(View.VISIBLE);
+            } else if (destination.getId() == R.id.navigation_notifications) {
+                navView.setVisibility(View.VISIBLE);
+            }
+        });
+
         sharedViewModel = new ViewModelProvider(this).get(SharedViewModel.class);
 
         FusedLocationProviderClient mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
@@ -81,6 +96,8 @@ public class MainActivity extends AppCompatActivity {
                         sharedViewModel.setUser(user);
                     }
                 });
+
+
 
 
     }

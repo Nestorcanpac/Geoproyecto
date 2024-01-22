@@ -50,6 +50,9 @@ public class NotificationsFragment extends Fragment {
         compassOverlay.enableCompass();
         binding.map.getOverlays().add(compassOverlay);
 
+
+
+
         return root;
     }
 

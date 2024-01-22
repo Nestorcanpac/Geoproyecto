@@ -27,6 +27,8 @@ import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import com.example.geoproyecto.R;
 import com.example.geoproyecto.databinding.FragmentHomeBinding;
@@ -102,6 +104,9 @@ public class HomeFragment extends Fragment {
 
             DatabaseReference reference = incidencies.push();
             reference.setValue(incidencia);
+
+
+
         });
 
 
@@ -115,8 +120,11 @@ public class HomeFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
 
-        Button boton=view.findViewById(R.id.buttonNotificar);
-        boton.setBackgroundColor(Color.parseColor("#FF0000"));
+        Button botontal=view.findViewById(R.id.buttonNotificar);
+        botontal.setBackgroundColor(Color.parseColor("#FF0000"));
+
+
+
 
     }
 
