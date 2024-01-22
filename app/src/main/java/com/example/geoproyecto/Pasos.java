@@ -1,6 +1,7 @@
 package com.example.geoproyecto;
 
 import android.graphics.Color;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,6 +21,7 @@ public class Pasos extends Fragment {
 
     private PasosLayoutBinding binding;
 
+    private MediaPlayer mp;
 
 
     @Override
@@ -43,6 +45,10 @@ public class Pasos extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        int audioRawId = R.raw.sonidomultimierda;
+        mp = MediaPlayer.create(requireContext(),audioRawId);
+
+
         ImageView logo1=view.findViewById(R.id.Logo1);
         logo1.setImageResource(R.drawable.teleee);
 
@@ -65,16 +71,19 @@ public class Pasos extends Fragment {
         boton.setOnClickListener(v -> {
             NavController navController= Navigation.findNavController(view);
             navController.navigate(R.id.action_pasos_to_navigation_home);
+            mp.start();
         });
 
         boton2.setOnClickListener(v -> {
             NavController navController= Navigation.findNavController(view);
             navController.navigate(R.id.action_pasos_to_navigation_dashboard);
+            mp.start();
         });
 
         boton3.setOnClickListener(v -> {
             NavController navController= Navigation.findNavController(view);
             navController.navigate(R.id.action_pasos_to_navigation_notifications);
+            mp.start();
         });
     }
 
