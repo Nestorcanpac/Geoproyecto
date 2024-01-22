@@ -4,7 +4,10 @@ public class Incidencia {
     String latitud;
     String longitud;
     String direccio;
-    String problema;
+    String nombre;
+
+    String propina;
+
 
     public String getLatitud() {
         return latitud;
@@ -30,21 +33,31 @@ public class Incidencia {
         this.direccio = direccio;
     }
 
-    public String getProblema() {
-        return problema;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setProblema(String problema) {
-        this.problema = problema;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-    public Incidencia(String latitud, String longitud, String direccio, String problema) {
+    public String getPropina() {
+        return propina;
+    }
+
+    public void setPropina(String propina) {
+        this.propina = propina;
+    }
+
+    public Incidencia(String latitud, String longitud, String direccio, String nombre, String propina) {
         this.latitud = latitud;
         this.longitud = longitud;
         this.direccio = direccio;
-        this.problema = problema;
+        this.nombre = nombre;
+        this.propina = propina;
     }
 
     public Incidencia() {
+
     }
 }

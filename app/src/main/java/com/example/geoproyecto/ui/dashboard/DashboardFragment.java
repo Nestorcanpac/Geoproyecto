@@ -29,8 +29,7 @@ public class DashboardFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        DashboardViewModel dashboardViewModel =
-                new ViewModelProvider(this).get(DashboardViewModel.class);
+
         SharedViewModel sharedViewModel = new ViewModelProvider(
                 requireActivity()
         ).get(SharedViewModel.class);
@@ -44,7 +43,7 @@ public class DashboardFragment extends Fragment {
 
                 DatabaseReference users = base.child("users");
                 DatabaseReference uid = users.child(authUser.getUid());
-                DatabaseReference incidencies = uid.child("incidencies");
+                DatabaseReference incidencies = uid.child("propinametida");
 
                 FirebaseRecyclerOptions<Incidencia> options = new FirebaseRecyclerOptions.Builder<Incidencia>()
                         .setQuery(incidencies, Incidencia.class)
@@ -81,7 +80,8 @@ public class DashboardFragment extends Fragment {
         protected void onBindViewHolder(
         @NonNull IncidenciaViewholder holder, int position, @NonNull Incidencia model
             ) {
-            holder.binding.txtDescripcio.setText(model.getProblema());
+            holder.binding.propina.setText(model.getPropina());
+            holder.binding.nombreTexto.setText(model.getNombre());
             holder.binding.txtAdreca.setText(model.getDireccio());
         }
 

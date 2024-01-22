@@ -36,5 +36,16 @@
         <action
             android:id="@+id/action_empezar_app_to_navigation_home2"
             app:destination="@id/navigation_home" />
+        <action
+            android:id="@+id/action_empezar_app_to_pasos"
+            app:destination="@id/pasos" />
+    </fragment>
+    <fragment
+        android:id="@+id/pasos"
+        android:name="com.example.geoproyecto.Pasos"
+        android:label="Pasos" >
+        <action
+            android:id="@+id/action_pasos_to_navigation_home"
+            app:destination="@id/navigation_home" />
     </fragment>
 </navigation>

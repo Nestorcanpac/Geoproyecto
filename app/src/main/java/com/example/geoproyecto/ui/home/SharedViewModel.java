@@ -68,13 +68,7 @@ public class SharedViewModel extends AndroidViewModel {
         return currentAddress;
     }
 
-    public MutableLiveData<String> getButtonText() {
-        return buttonText;
-    }
 
-    public MutableLiveData<Boolean> getProgressBar() {
-        return progressBar;
-    }
 
     public LiveData<String> getCheckPermission() {
         return checkPermission;

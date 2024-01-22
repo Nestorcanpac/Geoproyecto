@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.geoproyecto.databinding.FragmentNotificationsBinding;
+import com.example.geoproyecto.ui.home.SharedViewModel;
 
 import org.osmdroid.api.IMapController;
 import org.osmdroid.config.Configuration;
@@ -25,6 +26,8 @@ import org.osmdroid.views.overlay.mylocation.MyLocationNewOverlay;
 
 public class NotificationsFragment extends Fragment {
 
+
+
     private FragmentNotificationsBinding binding;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -35,12 +38,19 @@ public class NotificationsFragment extends Fragment {
         binding = FragmentNotificationsBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
+        SharedViewModel sharedViewModel = new ViewModelProvider(getActivity()).get(SharedViewModel.class);
+
         binding.map.setTileSource(TileSourceFactory.MAPNIK);
         binding.map.setMultiTouchControls(true);
         IMapController mapController = binding.map.getController();
         mapController.setZoom(14.5);
-        GeoPoint startPoint = new GeoPoint(39.4715612, -0.3930977);
-        mapController.setCenter(startPoint);
+
+        sharedViewModel.getCurrentLatLng().observe(getViewLifecycleOwner(), latlng -> {
+            GeoPoint startPoint = new GeoPoint(latlng.latitude, latlng.longitude);
+            mapController.setCenter(startPoint);
+        });
+
+
 
         MyLocationNewOverlay myLocationNewOverlay = new MyLocationNewOverlay(new GpsMyLocationProvider(requireContext()), binding.map);
         myLocationNewOverlay.enableMyLocation();

@@ -69,6 +69,8 @@ public class HomeFragment extends Fragment {
 
         SharedViewModel.getCurrentAddress().observe(getViewLifecycleOwner(), address -> {
 
+
+
             binding.txtDireccio.setText(String.format(
                     "Direccion: %1$s",
                     address, System.currentTimeMillis()
@@ -91,8 +93,9 @@ public class HomeFragment extends Fragment {
         binding.buttonNotificar.setOnClickListener(button -> {
             Incidencia incidencia = new Incidencia();
             incidencia.setDireccio(binding.txtDireccio.getText().toString());
+            incidencia.setNombre(binding.nombreTexto.getText().toString());
+            incidencia.setPropina(binding.propiintro.getText().toString()+"€");
 
-            incidencia.setProblema(binding.txtDescripcio.getText().toString());
 
             DatabaseReference base = FirebaseDatabase.getInstance(
                     "https://geoproyecto-731d1-default-rtdb.europe-west1.firebasedatabase.app"
@@ -100,7 +103,7 @@ public class HomeFragment extends Fragment {
 
             DatabaseReference users = base.child("users");
             DatabaseReference uid = users.child(authUser.getUid());
-            DatabaseReference incidencies = uid.child("incidencies");
+            DatabaseReference incidencies = uid.child("propinametida");
 
             DatabaseReference reference = incidencies.push();
             reference.setValue(incidencia);

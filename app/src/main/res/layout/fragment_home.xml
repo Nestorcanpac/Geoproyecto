@@ -19,13 +19,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textInputLayout5">
+        app:layout_constraintTop_toBottomOf="@+id/textView">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/txtDescripcio"
+            android:id="@+id/nombreTexto"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Introduce tu nombre y la Propina"
+            android:hint="NOMBRE"
             android:inputType="textMultiLine"
 
             android:overScrollMode="always"
@@ -53,6 +53,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="-400dp"
+        android:visibility="invisible"
         app:boxBackgroundColor="#FF0000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -65,7 +66,10 @@
             android:layout_height="wrap_content"
             android:enabled="false"
             android:hint="Dirección de tu propina"
-            android:textColor="#FFFFFF" />
+            android:textColor="#000000"
+            android:textColorHighlight="#000000"
+            android:textColorLink="#000000"
+            android:visibility="invisible" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
@@ -82,6 +86,62 @@
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout3"
         app:rippleColor="#FF0000"
         app:strokeColor="#FF0000" />
+
+    <TextView
+        android:id="@+id/introduce1"
+        android:layout_width="316dp"
+        android:layout_height="55dp"
+        android:text="Introduce tu nombre completo"
+        android:textAlignment="center"
+        android:textColorLink="#000000"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/textInputLayout3"
+        app:layout_constraintEnd_toEndOf="@+id/textInputLayout5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/propiintro"
+        android:layout_width="63dp"
+        android:layout_height="57dp"
+        android:hint="hint"
+        app:layout_constraintBottom_toTopOf="@+id/buttonNotificar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.341"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout3"
+        app:layout_constraintVertical_bias="0.563" />
+
+    <TextView
+        android:id="@+id/introduce2"
+        android:layout_width="264dp"
+        android:layout_height="34dp"
+        android:text="Introduce importe de propina"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/propiintro"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout3" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="57dp"
+        android:layout_height="55dp"
+        android:text="€"
+        android:textSize="44sp"
+        app:layout_constraintBottom_toTopOf="@+id/buttonNotificar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.254"
+        app:layout_constraintStart_toEndOf="@+id/propiintro"
+        app:layout_constraintTop_toBottomOf="@+id/introduce2"
+        app:layout_constraintVertical_bias="0.275" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

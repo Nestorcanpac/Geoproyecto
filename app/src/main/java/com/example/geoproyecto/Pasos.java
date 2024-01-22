@@ -15,10 +15,11 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
 import com.example.geoproyecto.databinding.EmpezarAppBinding;
+import com.example.geoproyecto.databinding.PasosLayoutBinding;
 
-public class Empezar_app extends Fragment {
+public class Pasos extends Fragment {
 
-    private EmpezarAppBinding binding;
+    private PasosLayoutBinding binding;
 
 
 
@@ -28,7 +29,7 @@ public class Empezar_app extends Fragment {
             Bundle savedInstanceState
     ) {
 
-        binding = EmpezarAppBinding.inflate(inflater, container, false);
+        binding = PasosLayoutBinding.inflate(inflater, container, false);
         return binding.getRoot();
 
 
@@ -44,16 +45,15 @@ public class Empezar_app extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
 
-        ImageView imageViewArriba=view.findViewById(R.id.ImagenEmpezar);
-        imageViewArriba.setImageResource(R.drawable.teleee);
 
 
-        Button boton=view.findViewById(R.id.Empezar);
+
+        Button boton=view.findViewById(R.id.BotonIniciopasos);
         boton.setBackgroundColor(Color.parseColor("#FF0000"));
 
         boton.setOnClickListener(v -> {
             NavController navController= Navigation.findNavController(view);
-            navController.navigate(R.id.action_empezar_app_to_pasos);
+            navController.navigate(R.id.action_pasos_to_navigation_home);
         });
     }
 
