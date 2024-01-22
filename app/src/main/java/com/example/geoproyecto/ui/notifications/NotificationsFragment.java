@@ -1,6 +1,7 @@
 package com.example.geoproyecto.ui.notifications;
 
 import android.content.Context;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
@@ -12,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.geoproyecto.R;
 import com.example.geoproyecto.databinding.FragmentNotificationsBinding;
 import com.example.geoproyecto.ui.home.SharedViewModel;
 
@@ -26,7 +28,7 @@ import org.osmdroid.views.overlay.mylocation.MyLocationNewOverlay;
 
 public class NotificationsFragment extends Fragment {
 
-
+    private MediaPlayer mp;
 
     private FragmentNotificationsBinding binding;
 
@@ -37,6 +39,10 @@ public class NotificationsFragment extends Fragment {
 
         binding = FragmentNotificationsBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
+
+        int audioRawId = R.raw.el_mapa;
+        mp=MediaPlayer.create(requireContext(),audioRawId);
+        mp.start();
 
         SharedViewModel sharedViewModel = new ViewModelProvider(getActivity()).get(SharedViewModel.class);
 

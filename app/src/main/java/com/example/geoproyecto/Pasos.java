@@ -14,7 +14,6 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
-import com.example.geoproyecto.databinding.EmpezarAppBinding;
 import com.example.geoproyecto.databinding.PasosLayoutBinding;
 
 public class Pasos extends Fragment {
@@ -44,16 +43,38 @@ public class Pasos extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        ImageView logo1=view.findViewById(R.id.Logo1);
+        logo1.setImageResource(R.drawable.teleee);
+
+        ImageView logo2=view.findViewById(R.id.Logo2);
+        logo2.setImageResource(R.drawable.teleee);
+
+        ImageView flecha1=view.findViewById(R.id.Flecha1);
+        flecha1.setImageResource(R.drawable.flecha);
+
+        ImageView flecha2=view.findViewById(R.id.Flecha2);
+        flecha2.setImageResource(R.drawable.flecha);
 
 
 
-
-        Button boton=view.findViewById(R.id.BotonIniciopasos);
+        Button boton=view.findViewById(R.id.botonPaso1);
         boton.setBackgroundColor(Color.parseColor("#FF0000"));
+        Button boton2=view.findViewById(R.id.BotonPaso2);
+        Button boton3=view.findViewById(R.id.BotonPaso3);
 
         boton.setOnClickListener(v -> {
             NavController navController= Navigation.findNavController(view);
             navController.navigate(R.id.action_pasos_to_navigation_home);
+        });
+
+        boton2.setOnClickListener(v -> {
+            NavController navController= Navigation.findNavController(view);
+            navController.navigate(R.id.action_pasos_to_navigation_dashboard);
+        });
+
+        boton3.setOnClickListener(v -> {
+            NavController navController= Navigation.findNavController(view);
+            navController.navigate(R.id.action_pasos_to_navigation_notifications);
         });
     }
 

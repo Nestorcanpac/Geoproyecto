@@ -17,8 +17,8 @@
 
         <TextView
             android:id="@+id/Paso1"
-            android:layout_width="125dp"
-            android:layout_height="41dp"
+            android:layout_width="119dp"
+            android:layout_height="30dp"
             android:layout_marginTop="28dp"
             android:text="Paso 1"
             android:textAlignment="center"
@@ -32,8 +32,8 @@
 
         <TextView
             android:id="@+id/paso2"
-            android:layout_width="143dp"
-            android:layout_height="47dp"
+            android:layout_width="135dp"
+            android:layout_height="35dp"
             android:text="Paso 2"
             android:textAlignment="center"
             android:textColor="#FFFFFF"
@@ -41,15 +41,14 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.501"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/Paso1"
-            app:layout_constraintVertical_bias="0.314" />
+            app:layout_constraintVertical_bias="0.339" />
 
         <TextView
             android:id="@+id/textView5"
-            android:layout_width="128dp"
-            android:layout_height="51dp"
+            android:layout_width="126dp"
+            android:layout_height="33dp"
             android:text="Paso 3"
             android:textAlignment="center"
             android:textColor="#FFFFFF"
@@ -60,7 +59,7 @@
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/paso2"
-            app:layout_constraintVertical_bias="0.571" />
+            app:layout_constraintVertical_bias="0.597" />
 
         <TextView
             android:id="@+id/textView7"
@@ -73,7 +72,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/Paso1"
-            app:layout_constraintVertical_bias="0.014" />
+            app:layout_constraintVertical_bias="0.0" />
 
         <TextView
             android:id="@+id/textView8"
@@ -87,7 +86,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/paso2"
-            app:layout_constraintVertical_bias="0.032" />
+            app:layout_constraintVertical_bias="0.024" />
 
         <TextView
             android:id="@+id/textView9"
@@ -99,25 +98,89 @@
             android:textColor="#FFFFFF"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.494"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView5"
-            app:layout_constraintVertical_bias="0.017" />
+            app:layout_constraintVertical_bias="0.016" />
 
         <Button
-            android:id="@+id/BotonIniciopasos"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:id="@+id/BotonPaso3"
+            android:layout_width="101dp"
+            android:layout_height="38dp"
             android:background="#FF0000"
-            android:text="Vamos al Paso 1"
-            android:textColor="#FF0000"
+            android:text="Saltar"
+            android:textColor="#FFFFFF"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.496"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView9"
+            app:layout_constraintVertical_bias="0.3" />
+
+        <ImageView
+            android:id="@+id/Flecha1"
+            android:layout_width="93dp"
+            android:layout_height="93dp"
+
+            android:rotation="90"
+            app:layout_constraintBottom_toTopOf="@+id/paso2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView7"
+            app:layout_constraintVertical_bias="0.8" />
+
+        <ImageView
+            android:id="@+id/Flecha2"
+            android:layout_width="100dp"
+            android:layout_height="104dp"
+            android:rotation="90"
+            app:layout_constraintBottom_toTopOf="@+id/textView5"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView9"
-            app:layout_constraintVertical_bias="0.333" />
+            app:layout_constraintTop_toBottomOf="@+id/textView8"
+            app:layout_constraintVertical_bias="0.824" />
 
+        <ImageView
+            android:id="@+id/Logo1"
+            android:layout_width="56dp"
+            android:layout_height="51dp"
+            android:layout_marginTop="4dp"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/Logo2"
+            android:layout_width="54dp"
+            android:layout_height="52dp"
+            android:layout_marginTop="4dp"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.991"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/botonPaso1"
+            android:layout_width="130dp"
+            android:layout_height="41dp"
+            android:text="Empezar"
+            app:layout_constraintBottom_toTopOf="@+id/Flecha1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView7" />
+
+        <Button
+            android:id="@+id/BotonPaso2"
+            android:layout_width="111dp"
+            android:layout_height="44dp"
+            android:text="Saltar"
+            app:layout_constraintBottom_toTopOf="@+id/Flecha2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
