@@ -73,7 +73,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/buttonNotificar"
+        android:id="@+id/SubePropi"
         android:layout_width="207dp"
         android:layout_height="61dp"
         android:background="@android:color/holo_red_light"
@@ -112,7 +112,7 @@
         android:layout_width="63dp"
         android:layout_height="57dp"
         android:hint="€"
-        app:layout_constraintBottom_toTopOf="@+id/buttonNotificar"
+        app:layout_constraintBottom_toTopOf="@+id/SubePropi"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.341"
         app:layout_constraintStart_toStartOf="parent"
@@ -139,7 +139,7 @@
         android:text="€"
         android:textColor="#000000"
         android:textSize="44sp"
-        app:layout_constraintBottom_toTopOf="@+id/buttonNotificar"
+        app:layout_constraintBottom_toTopOf="@+id/SubePropi"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.254"
         app:layout_constraintStart_toEndOf="@+id/propiintro"

@@ -1,24 +1,17 @@
 package com.example.geoproyecto;
 
-import static androidx.core.content.PermissionChecker.checkPermission;
-
-import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
@@ -26,10 +19,6 @@ import androidx.navigation.Navigation;
 
 import com.example.geoproyecto.databinding.EmpezarAppBinding;
 import com.example.geoproyecto.ui.home.SharedViewModel;
-import com.google.android.gms.location.FusedLocationProviderClient;
-import com.google.android.gms.location.LocationServices;
-
-
 
 
 public class Empezar_app extends Fragment {
@@ -49,6 +38,11 @@ public class Empezar_app extends Fragment {
             Bundle savedInstanceState
     ) {
 
+
+
+        SharedViewModel sharedViewModel = new ViewModelProvider(getActivity()).get(SharedViewModel.class);
+
+        sharedViewModel.switchTrackingLocation();
         binding = EmpezarAppBinding.inflate(inflater, container, false);
         return binding.getRoot();
 

@@ -1,55 +1,23 @@
 package com.example.geoproyecto.ui.home;
 
-import android.Manifest;
-import android.content.pm.PackageManager;
 import android.graphics.Color;
-import android.location.Address;
-import android.location.Geocoder;
-import android.location.GnssAntennaInfo;
-import android.location.Location;
 import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.text.TextUtils;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
 
 import com.example.geoproyecto.R;
 import com.example.geoproyecto.databinding.FragmentHomeBinding;
-import com.google.android.gms.location.FusedLocationProviderClient;
-import com.google.android.gms.location.LastLocationRequest;
-import com.google.android.gms.location.LocationCallback;
-import com.google.android.gms.location.LocationRequest;
-import com.google.android.gms.location.LocationResult;
-import com.google.android.gms.location.LocationServices;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 public class HomeFragment extends Fragment {
     private MediaPlayer mp;
@@ -82,7 +50,7 @@ public class HomeFragment extends Fragment {
 
 
 
-        sharedViewModel.switchTrackingLocation();
+
 
         sharedViewModel.getUser().observe(getViewLifecycleOwner(), user -> {
             authUser = user;
@@ -90,11 +58,13 @@ public class HomeFragment extends Fragment {
 
         mp = MediaPlayer.create(requireContext(),audioRawId);
 
-        binding.buttonNotificar.setOnClickListener(button -> {
-            Incidencia incidencia = new Incidencia();
-            incidencia.setDireccio(binding.txtDireccio.getText().toString());
-            incidencia.setNombre(binding.nombreTexto.getText().toString());
-            incidencia.setPropina(binding.propiintro.getText().toString()+"€");
+        binding.SubePropi.setOnClickListener(button -> {
+
+            com.example.geoproyecto.ui.home.Propina propina= new com.example.geoproyecto.ui.home.Propina();
+            Propina propina1 = new Propina();
+            propina1.setDireccio(binding.txtDireccio.getText().toString());
+            propina1.setNombre(binding.nombreTexto.getText().toString());
+            propina1.setPropina(binding.propiintro.getText().toString()+"€");
 
 
             DatabaseReference base = FirebaseDatabase.getInstance(
@@ -103,10 +73,10 @@ public class HomeFragment extends Fragment {
 
             DatabaseReference users = base.child("users");
             DatabaseReference uid = users.child(authUser.getUid());
-            DatabaseReference incidencies = uid.child("propinametida");
+            DatabaseReference propinametida = uid.child("propinametida");
 
-            DatabaseReference reference = incidencies.push();
-            reference.setValue(incidencia);
+            DatabaseReference reference = propinametida.push();
+            reference.setValue(propina1);
             mp.start();
 
 
@@ -124,7 +94,7 @@ public class HomeFragment extends Fragment {
 
 
 
-        Button botontal=view.findViewById(R.id.buttonNotificar);
+        Button botontal=view.findViewById(R.id.SubePropi);
         botontal.setBackgroundColor(Color.parseColor("#FF0000"));
 
 

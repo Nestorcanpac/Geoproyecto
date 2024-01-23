@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -14,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.geoproyecto.databinding.FragmentDashboardBinding;
 import com.example.geoproyecto.databinding.LayoutIncidenciaBinding;
-import com.example.geoproyecto.ui.home.Incidencia;
+import com.example.geoproyecto.ui.home.Propina;
 import com.example.geoproyecto.ui.home.SharedViewModel;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
@@ -45,8 +44,8 @@ public class DashboardFragment extends Fragment {
                 DatabaseReference uid = users.child(authUser.getUid());
                 DatabaseReference incidencies = uid.child("propinametida");
 
-                FirebaseRecyclerOptions<Incidencia> options = new FirebaseRecyclerOptions.Builder<Incidencia>()
-                        .setQuery(incidencies, Incidencia.class)
+                FirebaseRecyclerOptions<Propina> options = new FirebaseRecyclerOptions.Builder<Propina>()
+                        .setQuery(incidencies, Propina.class)
                         .setLifecycleOwner(this)
                         .build();
 
@@ -71,14 +70,14 @@ public class DashboardFragment extends Fragment {
         binding = null;
     }
 
-    class IncidenciaAdapter extends FirebaseRecyclerAdapter<Incidencia, IncidenciaAdapter.IncidenciaViewholder> {
-        public IncidenciaAdapter(@NonNull FirebaseRecyclerOptions<Incidencia> options) {
+    class IncidenciaAdapter extends FirebaseRecyclerAdapter<Propina, IncidenciaAdapter.IncidenciaViewholder> {
+        public IncidenciaAdapter(@NonNull FirebaseRecyclerOptions<Propina> options) {
             super(options);
         }
 
         @Override
         protected void onBindViewHolder(
-        @NonNull IncidenciaViewholder holder, int position, @NonNull Incidencia model
+        @NonNull IncidenciaViewholder holder, int position, @NonNull Propina model
             ) {
             holder.binding.propina.setText(model.getPropina());
             holder.binding.nombreTexto.setText(model.getNombre());

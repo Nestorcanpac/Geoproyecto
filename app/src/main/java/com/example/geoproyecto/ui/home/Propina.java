@@ -1,6 +1,6 @@
 package com.example.geoproyecto.ui.home;
 
-public class Incidencia {
+public class Propina {
     String latitud;
     String longitud;
     String direccio;
@@ -49,7 +49,7 @@ public class Incidencia {
         this.propina = propina;
     }
 
-    public Incidencia(String latitud, String longitud, String direccio, String nombre, String propina) {
+    public Propina(String latitud, String longitud, String direccio, String nombre, String propina) {
         this.latitud = latitud;
         this.longitud = longitud;
         this.direccio = direccio;
@@ -57,7 +57,7 @@ public class Incidencia {
         this.propina = propina;
     }
 
-    public Incidencia() {
+    public Propina() {
 
     }
 }
