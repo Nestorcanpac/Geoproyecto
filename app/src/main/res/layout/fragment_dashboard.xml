@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/polish_20240119_103347241"
-    tools:context=".ui.dashboard.DashboardFragment">
+    tools:context=".ui.dashboard.FormularioFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvIncidencies"

@@ -21,7 +21,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class DashboardFragment extends Fragment {
+public class FormularioFragment extends Fragment {
 
     private FragmentDashboardBinding binding;
     private FirebaseUser authUser;

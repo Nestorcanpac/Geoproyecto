@@ -19,7 +19,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class HomeFragment extends Fragment {
+public class MetePropiFragment extends Fragment {
     private MediaPlayer mp;
     private FragmentHomeBinding binding;
     private FirebaseUser authUser;
@@ -28,7 +28,7 @@ public class HomeFragment extends Fragment {
 
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        HomeViewModel homeViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
+        MetePropinaViewModel metePropinaViewModel = new ViewModelProvider(this).get(MetePropinaViewModel.class);
 
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();

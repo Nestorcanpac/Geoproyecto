@@ -19,14 +19,13 @@
             android:id="@+id/Paso1"
             android:layout_width="119dp"
             android:layout_height="30dp"
-            android:layout_marginTop="28dp"
+            android:layout_marginTop="16dp"
             android:text="Paso 1"
             android:textAlignment="center"
             android:textColor="#FFFFFF"
             android:textSize="24sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.503"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -34,6 +33,7 @@
             android:id="@+id/paso2"
             android:layout_width="135dp"
             android:layout_height="35dp"
+            android:layout_marginTop="-5dp"
             android:text="Paso 2"
             android:textAlignment="center"
             android:textColor="#FFFFFF"
@@ -43,7 +43,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/Paso1"
-            app:layout_constraintVertical_bias="0.339" />
+            app:layout_constraintVertical_bias="0.356" />
 
         <TextView
             android:id="@+id/textView5"
@@ -126,7 +126,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView7"
-            app:layout_constraintVertical_bias="0.8" />
+            app:layout_constraintVertical_bias="0.658" />
 
         <ImageView
             android:id="@+id/Flecha2"
